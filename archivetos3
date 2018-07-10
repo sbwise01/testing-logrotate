@@ -1,0 +1,12 @@
+/var/log/archivetos3.log {
+    create 0644 root root
+    daily
+    rotate 5
+    missingok
+    notifempty
+    compress
+    sharedscripts
+    postrotate
+        /usr/local/bin/archivetos3.sh pax-production-fogops-logrotation /var/log/archivetos3.log >> /var/log/archivetos3.log 2>&1
+    endscript
+}
