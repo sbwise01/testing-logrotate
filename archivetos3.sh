@@ -21,9 +21,7 @@ log_line "starting archive"
 ARCHIVE_FILES=`find $ARCHIVE_FIND_PATTERN -type f`
 for archive in $ARCHIVE_FILES
 do
-    ARCHIVE_BASE_NAME=`basename $archive`
-    ARCHIVE_DIR_NAME=`dirname $archive`
-    S3_LOCATION_URL="s3://${S3_BUCKET}${ARCHIVE_DIR_NAME}/${INSTANCE_ID}-${ARCHIVE_BASE_NAME}"
+    S3_LOCATION_URL="s3://${S3_BUCKET}/logarchive/${INSTANCE_ID}$archive"
     log_line "Archiving $archive to $S3_LOCATION_URL"
     aws s3 cp --quiet $archive $S3_LOCATION_URL
     if [ "$?" -ne 0 ]

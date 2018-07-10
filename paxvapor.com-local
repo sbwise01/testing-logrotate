@@ -8,6 +8,6 @@
     sharedscripts
     postrotate
         /etc/init.d/nginx reopen_logs
-        /usr/local/bin/archivetos3.sh pax-production-fogops-logrotation /home/webadmin/sites/paxvapor.com/common/var/log/*log >> /var/log/archivetos3.log 2>&1
+        /usr/local/bin/archivetos3.sh pax-production-fogops-logs /home/webadmin/sites/paxvapor.com/common/var/log/*log >> /var/log/archivetos3.log 2>&1
     endscript
 }
